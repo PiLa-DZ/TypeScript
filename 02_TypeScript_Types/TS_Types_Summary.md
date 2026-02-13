@@ -1,0 +1,20 @@
+Primitive_Types
+    Boolean
+    Number
+    String
+    Void
+    Undefined
+    Null
+Object_Types
+    Interface
+    Class
+    Enum
+    Array
+    Tuple
+    Object
+Top_Types
+    Any
+    Unknown
+Bottom_Types
+    Never
+

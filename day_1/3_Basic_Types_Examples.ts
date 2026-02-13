@@ -25,4 +25,8 @@ let id: string | number;
 id = 101;       // Valid
 id = "A-101";   // Valid
 // id = true;      // ERROR: Boolean is not part of the Union
+
+// 6. You Can write types just like this
+let a = "any thing"
 // ```
+
