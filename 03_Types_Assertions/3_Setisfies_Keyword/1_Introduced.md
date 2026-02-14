@@ -1,0 +1,1 @@
+- The satisfies keyword (introduced in TypeScript 4.9)
