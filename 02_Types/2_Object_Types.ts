@@ -70,7 +70,7 @@ const first = pair[0];
 const second = pair[1];
 
 // Error: Index out of bounds
-const third = pair[2];
+// const third = pair[2];
 
 // ============================================================
 // Object
