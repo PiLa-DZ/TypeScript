@@ -1,0 +1,5 @@
+1. files      (Strict way to include files)
+2. Include    (include entire directories by patterns)
+3. Exclude    (ignore  entire directories by patterns)
+4. Extends    (Join another config file)
+5. References (Config sub-projects, Use larger system)
