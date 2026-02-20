@@ -1,4 +1,4 @@
-```TS
+```JSON
 {
   "compilerOptions": {
     "outDir": "./dist",           // Put compiled files here
