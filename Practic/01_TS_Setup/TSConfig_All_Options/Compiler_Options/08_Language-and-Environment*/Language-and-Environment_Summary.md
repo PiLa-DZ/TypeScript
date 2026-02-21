@@ -5,6 +5,7 @@ Language-and-Environment  (code will run in (Node.js version, browser, etc.))
 ```JSON
 {
   "compilerOptions": {
+    /* Language and Environment Options */
     "target": "ES2022",              // The version of JavaScript output. ES2022 is perfect for modern Node.js.
     "lib": ["ES2022"],               // Specifies which type definitions are included. We leave out 'DOM' because this is a backend project.
     "useDefineForClassFields": true, // Standardizes how class properties work. Best to keep true for future-proofing.

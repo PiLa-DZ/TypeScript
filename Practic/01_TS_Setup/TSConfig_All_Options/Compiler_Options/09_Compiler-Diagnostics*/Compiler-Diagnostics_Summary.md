@@ -9,7 +9,6 @@ Compiler-Diagnostics (Debug Mode)
        COMPILER DIAGNOSTICS (Troubleshooting)
        Keep these 'false' or commented out unless you have a problem.
        ----------------------------------------------------------------- */
-
     "extendedDiagnostics": false,              // Shows how long compilation took and how much memory was used.
     "explainFiles": false,                     // Explains why a file was included in the compilation process. Great for finding out why your build is too large.
     "traceResolution": false,                  // Prints the search path for every import. Essential for fixing "Module not found" errors.

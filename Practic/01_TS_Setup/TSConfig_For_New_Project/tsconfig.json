@@ -1,0 +1,65 @@
+{
+  /* ================================================================ */
+  /* This Just For Example what you have to care about in New project */
+  /* ================================================================ */
+  "compilerOptions": {
+    // The Modules is the "Traffic Controller" of your project. 
+    "module": "NodeNext",           // Sets the output JS code format. 'NodeNext' is the modern standard that supports both ES Modules (import/export) and CommonJS (require).
+    "moduleResolution": "NodeNext", // Tells TS how to look for files. 'NodeNext' ensures the compiler finds your files the same way Node.js does during execution.
+    "rootDir": "./src",             // The 'source' of your project. Tells the compiler to ignore the surrounding folder structure and only mirror what is inside './src'.
+    "baseUrl": ".",                 // The root directory for non-relative module names. Necessary for the 'paths' feature to work correctly.
+    "paths": { "@/*": ["src/*"] },  // Alias mapping. Allows you to use '@/' instead of ugly relative paths like '../../../../'. Makes imports cleaner and easier to move.
+    "resolveJsonModule": true,      // Allows you to import '.json' files directly into your code. Essential for reading config files or 'package.json'.
+
+    // Emit (how TypeScript generates your output files)
+    "outDir": "./dist",           // Destination for compiled code
+    "noEmit": false,              // Check your code for errors but will not create any files
+    "noEmitOnError": true,        // Prevents broken code from being saved to the dist folder
+    "sourceMap": true,            // (The Debugger Link) This creates .js.map files.
+    "declaration": true,          // This tells TypeScript to generate .d.ts files (Declaration files).
+    "removeComments": true,       // Optimization 
+
+    "skipLibCheck": true,       // Skip type checking of all declaration files (*.d.ts). Saves massive amounts of time and ignores errors in 3rd party libs.
+
+    // Type-Cheching (the "Strictness Dial" of TypeScript)
+    "strict": true,                  // The 'Master' safety switch. Enables a suite of core strict checks including strictNullChecks and noImplicitAny.
+    "noUnusedLocals": true,          // Error when a local variable is declared but never used. Keeps code clean and helps find 'forgotten' variables.
+    "noImplicitReturns": true,       // Ensures every code path in a function returns a value. Prevents functions from accidentally returning 'undefined'.
+    "noUncheckedIndexedAccess": true,// The 'Safety First' index check. When accessing an array or object by index, it forces you to check if the value is 'undefined'.
+
+    // Interop-Constraints (handles modern modules, old-school modules, and operating systems)
+    "esModuleInterop": true,                  // Standard for Node.js: Allows 'import express from "express"' instead of requiring 'import * as express'
+    "forceConsistentCasingInFileNames": true, // Essential for Linux deployment: Forces you to match the exact upper/lowercase of your filenames
+    "isolatedModules": true,                  // Ensures each file is safe for fast external transpilers like 'tsx'
+    "verbatimModuleSyntax": true,             // Modern approach to module imports; keeps things predictable by not being 'too smart' about removing imports
+
+    // Language-and-Environment  (code will run in (Node.js version, browser, etc.))
+    "target": "ES2022",              // The version of JavaScript output. ES2022 is perfect for modern Node.js.
+    "lib": ["ES2022"],               // Specifies which type definitions are included. We leave out 'DOM' because this is a backend project.
+    "useDefineForClassFields": true, // Standardizes how class properties work. Best to keep true for future-proofing.
+    "experimentalDecorators": false, // Enables the @Decorator syntax. and Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
+    "emitDecoratorMetadata": false,  // Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
+    "moduleDetection": "force",      // Ensures every file is treated as an independent module.
+
+    /* Project Options: is specifically for "Monorepos" or very large applications split into multiple smaller packages (a core package, an api package, and a db-client package) */
+    "composite": false,                 // Enables Project References, allowing you to break a large Express app into smaller, faster sub-projects.
+    "incremental": true,                // Saves a '.tsbuildinfo' file to speed up future compilations by only building what changed. HIGHLY RECOMMENDED.
+    "tsBuildInfoFile": "./.tsbuildinfo" // Specifies where the incremental build cache file is stored.
+
+    // Compiler-Diagnostics (Debug Mode)
+    // COMPILER DIAGNOSTICS (Troubleshooting) Keep these 'false' or commented out unless you have a problem.
+    "extendedDiagnostics": false,              // Shows how long compilation took and how much memory was used.
+    "explainFiles": false,                     // Explains why a file was included in the compilation process. Great for finding out why your build is too large.
+    "traceResolution": false,                  // Prints the search path for every import. Essential for fixing "Module not found" errors.
+    "generateCpuProfile": "profile.cpuprofile",// Generates a file to analyze compiler performance in a profiler.
+
+    // Just Terminal Outputs
+    // OUTPUT FORMATTING Controls how the compiler speaks to you in the terminal.
+    "noErrorTruncation": true,   // Gives you the full error message, no matter how long it is. Essential for debugging complex database types.
+    "preserveWatchOutput": true, // Keeps your terminal history alive when using 'watch mode'.
+    "pretty": true               // Stylizes errors with colors and context for easier reading.
+
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"] 
+}

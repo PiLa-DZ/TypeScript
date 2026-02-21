@@ -1,0 +1,37 @@
+{
+  /* ================================================================ */
+  /* This Just For Example what you have to care about in Old project */
+  /* ================================================================ */
+  "compilerOptions": {
+    /* --- Backwards Compatibility (The "Relaxed" Rules) --- */
+    "target": "ES5",                          // Output code that runs on older versions of Node/Browsers
+    "module": "CommonJS",                     // Traditional Node.js style (require/module.exports)
+    "lib": ["ES6", "DOM"],                    // Standard libraries for older environments
+    "moduleResolution": "Node",               // The classic way Node finds files
+    
+    /* --- JavaScript Support (Crucial for Migration) --- */
+    "allowJs": true,                          // Allow .js files to exist alongside .ts files
+    "checkJs": false,                         // Don't report errors in .js files (prevents "error flooding")
+    "maxNodeModuleJsDepth": 1,                // Only look 1 level deep into node_modules for JS types
+
+    /* --- Loose Type-Checking (To avoid immediate errors) --- */
+    "strict": false,                          // Disable all strict requirements for now
+    "noImplicitAny": false,                   // Allow variables to be 'any' without complaining
+    "strictNullChecks": false,                // Don't worry about 'null' or 'undefined' errors yet
+    "skipLibCheck": true,                     // Ignore errors in old, buggy node_modules
+
+    /* --- Interop (Fixing import mismatches) --- */
+    "esModuleInterop": true,                  // Helps 'import' work with old 'require' libraries
+    "allowSyntheticDefaultImports": true,     // Support imports for libs that don't have a default export
+
+    /* --- Emit (Output) --- */
+    "outDir": "./dist",
+    "sourceMap": true,                        // Still helpful for debugging legacy code
+    "downlevelIteration": true,               // Makes modern loops (for..of) work in ES5
+
+    /* --- Performance --- */
+    "incremental": true                       // Even old projects should be fast to rebuild
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

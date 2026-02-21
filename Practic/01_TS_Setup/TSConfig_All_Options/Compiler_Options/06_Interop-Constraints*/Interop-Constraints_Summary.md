@@ -5,6 +5,7 @@ Interop-Constraints (handles modern modules, old-school modules, and operating s
 ```JSON
 {
   "compilerOptions": {
+    /* Interop Constraints Options */
     "esModuleInterop": true,                  // Standard for Node.js: Allows 'import express from "express"' instead of requiring 'import * as express'
     "forceConsistentCasingInFileNames": true, // Essential for Linux deployment: Forces you to match the exact upper/lowercase of your filenames
     "isolatedModules": true,                  // Ensures each file is safe for fast external transpilers like 'tsx'

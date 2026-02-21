@@ -5,6 +5,7 @@ Projects (Monorepos)
 ```JSON
 {
   "compilerOptions": {
+    /* Project Options */
     "composite": false,                 // Enables Project References, allowing you to break a large Express app into smaller, faster sub-projects.
     "incremental": true,                // Saves a '.tsbuildinfo' file to speed up future compilations by only building what changed. HIGHLY RECOMMENDED.
     "tsBuildInfoFile": "./.tsbuildinfo" // Specifies where the incremental build cache file is stored.

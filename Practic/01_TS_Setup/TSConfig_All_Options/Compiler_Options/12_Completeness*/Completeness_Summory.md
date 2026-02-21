@@ -10,8 +10,10 @@ Completeness (should checking the health of the library)
        Settings that determine how much of the total project 'web' 
        the compiler actually validates.
        ----------------------------------------------------------------- */
-
+    /* Completeness Options (should checking the health of the library) */
     "skipLibCheck": true,       // Skip type checking of all declaration files (*.d.ts). Saves massive amounts of time and ignores errors in 3rd party libs.
+
+    // NOTE: Use skipLibCheck instead. Skip type checking of default library declaration files.
     "skipDefaultLibCheck": true // Skip type checking of the default library files (ES6, DOM, etc). Mostly redundant if skipLibCheck is true.
   }
 }

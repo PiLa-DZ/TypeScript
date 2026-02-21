@@ -1,0 +1,49 @@
+{
+  /* ================================================================ */
+  /* This Just For Example what you have to care about in big project */
+  /* ================================================================ */
+  "compilerOptions": {
+    /* --- 1. ARCHITECTURE & PERFORMANCE --- */
+    "composite": true,                // Essential for large projects: allows sub-projects to be built independently
+    "incremental": true,              // Saves build state to speed up the NEXT compilation
+    "tsBuildInfoFile": "./.tsbuildinfo", // Specific path for the build cache
+    "skipLibCheck": true,             // Massive performance boost: don't type-check node_modules
+    "disableSourceOfProjectReferenceRedirect": true, // Speeds up editor by using .d.ts files instead of raw .ts
+
+    /* --- 2. MODULARITY (The "Clean Code" setup) --- */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["src/core/*"],     // Domain-driven aliases
+      "@api/*": ["src/api/*"],
+      "@shared/*": ["src/shared/*"]
+    },
+
+    /* --- 3. STRICTEST SAFETY (No room for error at scale) --- */
+    "strict": true,                   
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true, // Prevents accidental switch-case bugs
+    "noUncheckedIndexedAccess": true,  // Forces safety checks on array/object access
+    "noPropertyAccessFromIndexSignature": true, // Ensures strict property checking
+    "exactOptionalPropertyTypes": true, // Prevents assigning 'undefined' to optional fields
+
+    /* --- 4. EMIT & HYGIENE --- */
+    "target": "ES2022",
+    "outDir": "./dist",
+    "declaration": true,              // Generates .d.ts files for other project parts to use
+    "declarationMap": true,           // Links .d.ts back to .ts for "Go to Definition" in large projects
+    "sourceMap": true,
+    "removeComments": true,
+    "newLine": "lf",                  // Ensures consistent line endings across Windows/Linux teams
+
+    /* --- 5. INTEROP & ENV --- */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,          // Required for fast bundlers like esbuild or swc
+    "verbatimModuleSyntax": true      // Ensures predictable import behavior
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "test", "benchmark"]
+}

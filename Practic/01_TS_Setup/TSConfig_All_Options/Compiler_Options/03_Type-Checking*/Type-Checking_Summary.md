@@ -5,6 +5,7 @@ Type-Cheching (the "Strictness Dial" of TypeScript)
 ```JSON
 {
   "compilerOptions": {
+    /* Type-Cheching_Options */
     "strict": true,                  // The 'Master' safety switch. Enables a suite of core strict checks including strictNullChecks and noImplicitAny.
     "noUnusedLocals": true,          // Error when a local variable is declared but never used. Keeps code clean and helps find 'forgotten' variables.
     "noImplicitReturns": true,       // Ensures every code path in a function returns a value. Prevents functions from accidentally returning 'undefined'.

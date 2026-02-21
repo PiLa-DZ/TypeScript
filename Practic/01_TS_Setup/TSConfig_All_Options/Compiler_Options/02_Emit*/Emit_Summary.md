@@ -5,6 +5,7 @@ Emit (how TypeScript generates your output files)
 ```JSON
 {
   "compilerOptions": {
+    /* Emit Options */
     "outDir": "./dist",           // Destination for compiled code
     "noEmit": false,              // Check your code for errors but will not create any files
     "noEmitOnError": true,        // Prevents broken code from being saved to the dist folder
