@@ -1,3 +1,21 @@
+npm init -y
+npm pkg set type="module"
+npm pkg set private=true
+npm pkg set main="dist/index.js"
+
+npm pkg set scripts.start="node dist/index.js"
+npm pkg set scripts.dev="tsx watch src/index.ts"
+npm pkg set scripts.build="tsc"
+npm pkg set scripts.type:check="tsc --watch --noEmit"
+
+npm install typescript     --save-dev --verbose # TypeScript Compiler
+npm install @types/node    --save-dev --verbose # TypeScript Definitions For NodeJS
+npm install tsx            --save-dev --verbose # TypeScript Execute
+
+mkdir -p src
+touch src/index.ts
+
+cat <<EOF > tsconfig.json
 {
   /* ================================================================ */
   /* This Just For Example what you have to care about in New project */
@@ -63,3 +81,5 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"] 
 }
+EOF
+

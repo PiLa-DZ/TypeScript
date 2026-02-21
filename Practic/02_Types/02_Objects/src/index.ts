@@ -5,9 +5,14 @@ interface Person {
   name: string;
   age: number;
 }
-function greet(person: Person) {
-  return "Hello " + person.name;
-}
+
+const newPerson: Person = {
+  name: "Jon",
+  age: 22,
+};
+
+console.log(newPerson); // { name: 'Jon', age: 22 }
+console.log(newPerson.name, newPerson.age); // Jon 22
 
 // ============================================================
 // Class
@@ -28,6 +33,13 @@ class Car {
   }
 }
 
+const car: Car = new Car("Honda", "GTR", 2015);
+
+car.drive(); // Driving my 2015 Honda GTR
+console.log(car.make); // Honda
+console.log(car.model); // GTR
+console.log(car.year); // 2015
+
 // ============================================================
 // Enum
 // 1. Numeric Enums
@@ -38,8 +50,10 @@ enum UserRole {
   Admin, // 2
   SuperMod, // 3
 }
-let myRole: UserRole = UserRole.Admin;
-console.log(myRole); // Outputs: 2
+
+console.log(UserRole.Admin); // 2
+// console.log(UserRole.admin); // Eroor
+// console.log(UserRole.SuperAdmin); // Eroor
 
 // 2. String Enums
 // In modern TypeScript, String Enums are usually preferred because they are easier to debug. When you log them, you see the actual word instead of a number.
@@ -48,17 +62,19 @@ enum Status {
   Inactive = "INACTIVE",
   Pending = "PENDING",
 }
-function checkStatus(current: Status) {
-  if (current === Status.Active) {
-    console.log("The system is running!");
-  }
-}
-checkStatus(Status.Active); // Passing the enum value
+let myStatus: Status;
+myStatus = Status.Active;
+console.log(myStatus); // ACTIVE
 
 // ============================================================
 // Array
 let tags: string[] = ["node", "express"];
 let scores: Array<number> = [10, 20, 30];
+
+console.log(tags[0]); // node
+console.log(tags[100]); // undefined
+console.log(scores[0]); // 10
+console.log(scores.length); // 3
 
 // ============================================================
 // Tuple
@@ -66,12 +82,9 @@ let scores: Array<number> = [10, 20, 30];
 // and exactly which types it contains at specific positions.
 type StringNumberPair = [string, number];
 const pair: StringNumberPair = ["hello", 42];
-
-const first = pair[0];
-const second = pair[1];
-
-// Error: Index out of bounds
-// const third = pair[2];
+console.log(pair[0]); // hello
+console.log(pair[1]); // 42
+// console.log(pair[100]); // Error
 
 // ============================================================
 // Object
@@ -84,3 +97,6 @@ function printCoord(pt: { x: number; y: number }) {
   console.log("The coordinate's y value is " + pt.y);
 }
 printCoord({ x: 3, y: 7 });
+// Output:
+// The coordinate's x value is 3
+// The coordinate's y value is 7

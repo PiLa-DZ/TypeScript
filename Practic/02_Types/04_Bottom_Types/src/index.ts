@@ -1,11 +1,14 @@
 // ============================================================
 // 1. The "Endless" Function
-// A function returns never if it literally cannot reach its closing brace. This usually happens in two scenarios:
+// A function returns never if it literally cannot reach its closing brace.
+// This usually happens in two scenarios:
 
 // It throws an error (breaking the execution flow).
 function throwError(message: string): never {
   throw new Error(message); // The function stops here and never "returns"
 }
+throwError;
+// console.log(throwError("this is never"));
 
 // It contains an infinite loop.
 function keepRunning(): never {
@@ -13,6 +16,8 @@ function keepRunning(): never {
     console.log("I am looping forever...");
   }
 }
+keepRunning;
+// keepRunning();
 
 // ============================================================
 // 2. Exhaustive Type Checking (The Pro Move)
@@ -32,6 +37,8 @@ function getArea(shape: Shape) {
       return Math.PI * 5 ** 2;
     case Shape.Square:
       return 25;
+    case Shape.Triangle: // You forgot this case
+      return 33;
     default:
       // If we handled Circle and Square, but forgot Triangle...
       // 'shape' here will be of type 'Triangle'
@@ -40,9 +47,10 @@ function getArea(shape: Shape) {
       return _exhaustiveCheck;
   }
 }
+const a = getArea(Shape.Triangle);
+console.log(a);
 // By assigning the default case to a variable of type never, TypeScript will scream at you if you add a new shape to the Enum but forget to update your logic. It’s an automated "to-do" list for your code.
 
-// ============================================================
 // When will you see it automatically?
 // You might see never pop up in your editor when you use Type Narrowing incorrectly:
 const name: string = "Alex";

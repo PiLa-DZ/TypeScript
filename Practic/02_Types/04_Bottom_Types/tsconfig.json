@@ -26,6 +26,7 @@
     "noUnusedLocals": true,          // Error when a local variable is declared but never used. Keeps code clean and helps find 'forgotten' variables.
     "noImplicitReturns": true,       // Ensures every code path in a function returns a value. Prevents functions from accidentally returning 'undefined'.
     "noUncheckedIndexedAccess": true,// The 'Safety First' index check. When accessing an array or object by index, it forces you to check if the value is 'undefined'.
+    "noUnusedParameters": true, // Error if a function parameter isn't used
 
     // Interop-Constraints (handles modern modules, old-school modules, and operating systems)
     "esModuleInterop": true,                  // Standard for Node.js: Allows 'import express from "express"' instead of requiring 'import * as express'
@@ -48,10 +49,10 @@
 
     // Compiler-Diagnostics (Debug Mode)
     // COMPILER DIAGNOSTICS (Troubleshooting) Keep these 'false' or commented out unless you have a problem.
-    "extendedDiagnostics": false,              // Shows how long compilation took and how much memory was used.
-    "explainFiles": false,                     // Explains why a file was included in the compilation process. Great for finding out why your build is too large.
-    "traceResolution": false,                  // Prints the search path for every import. Essential for fixing "Module not found" errors.
-    "generateCpuProfile": "profile.cpuprofile",// Generates a file to analyze compiler performance in a profiler.
+    // "extendedDiagnostics": false,              // Shows how long compilation took and how much memory was used.
+    // "explainFiles": false,                     // Explains why a file was included in the compilation process. Great for finding out why your build is too large.
+    // "traceResolution": false,                  // Prints the search path for every import. Essential for fixing "Module not found" errors.
+    // "generateCpuProfile": "profile.cpuprofile",// Generates a file to analyze compiler performance in a profiler.
 
     // Just Terminal Outputs
     // OUTPUT FORMATTING Controls how the compiler speaks to you in the terminal.
