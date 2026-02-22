@@ -33,8 +33,9 @@ function check2(pet: Fish | Bird) {
 
 // ============================================================
 // 3. Real-World Backend Case: Filtering Arrays
-// This is where Type Predicates are most powerful. 
-// Imagine you have a list of items from your database, and some are null or undefined. 
+// This is where Type Predicates are most powerful.
+// Imagine you have a list of items from your database,
+// and some are null or undefined.
 // You want to filter them out and have a "clean" array.
 
 const results = ["admin", "editor", null, "viewer"];
@@ -48,6 +49,3 @@ function isNotNull<T>(val: T | null): val is T {
 }
 
 const clean = results.filter(isNotNull); // Type is now: string[] 🚀
-
-
-
