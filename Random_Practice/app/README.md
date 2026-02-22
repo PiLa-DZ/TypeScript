@@ -15,12 +15,11 @@ Type Guards Narrowing ->
                         TypeOf     { Primitives                      } Null-Problem
                         IN         { Interface                       }
                         Equality   { (null undefined) Literal-Unions }
-                        Truthiness { 
-                                     Falsy-Rule-(0 NaN "" null undefined false) 
-                                     Coercion-(!!)
-                                     Logical-Operators-(&& ||) 
-                                   } Zero-Bug-(0) 
-                        Predicates { (is) } 
+                        Truthiness { Falsy-Rule Coercion-(!!) Logical-Operators-(&& ||) } Zero-Bug-(0) Predicates { (is) } 
+
 TS_Functions          ->
                         Functions  {Return-Type Expressions-Blueprint Overloads}
                         Parameters {Parameter-types Optional-(?) Default-(=) Rest(...)}
+
+Interfaces            -> (extends) Declaration-Merging (implements)
+
