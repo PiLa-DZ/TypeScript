@@ -1,7 +1,7 @@
 // ============================================================
 // 1. Inheritance (The "is-a" Relationship)
-// Inheritance is about reusability. 
-// You create a parent class with shared logic, 
+// Inheritance is about reusability.
+// You create a parent class with shared logic,
 // and child classes "inherit" that logic so you don't have to rewrite it.
 
 // Backend Example:
@@ -9,7 +9,7 @@
 
 class User {
   constructor(public email: string) {}
-  
+
   save() {
     console.log(`Saving ${this.email} to the database...`);
   }
@@ -28,7 +28,9 @@ boss.save(); // ✅ Inherited from User
 
 // ============================================================
 // 2. Polymorphism (The "Many Shapes" Concept)
-// Polymorphism is about flexibility. It’s the ability for different classes to be treated as if they were the same "parent" type, but each one performs the action in its own specific way.
+// Polymorphism is about flexibility.
+// It’s the ability for different classes to be treated as if they were the same "parent" type,
+// but each one performs the action in its own specific way.
 
 // Backend Example:
 // Imagine you support multiple notification methods (Email, SMS, Slack).
@@ -51,7 +53,22 @@ class SMSNotifier extends Notifier {
 
 // POLYMORPHISM IN ACTION:
 function notifyAll(notifiers: Notifier[], msg: string) {
-  notifiers.forEach(n => n.send(msg)); // We don't care IF it's SMS or Email
+  notifiers.forEach((n) => n.send(msg)); // We don't care IF it's SMS or Email
 }
+
+// Create a list (array) of different notifiers
+const mySubscribers: Notifier[] = [
+  new EmailNotifier(),
+  new SMSNotifier(),
+  new EmailNotifier(), // You can have many!
+];
+
+// 2. Use the function
+notifyAll(mySubscribers, "Your MariaDB backup is complete!");
+
+// OUTPUT:
+// Sending Email: Your MariaDB backup is complete!
+// Sending SMS: Your MariaDB backup is complete!
+// Sending Email: Your MariaDB backup is complete!
 
 // Key Benefit: You can add a SlackNotifier later without changing a single line of code in the notifyAll function.

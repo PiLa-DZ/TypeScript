@@ -95,8 +95,8 @@ class BankAccount {
 // ============================================================
 // Technically, it's a "family of three":
 // The Constructor (The Factory): The function that builds the object.
-// The Prototype (The Parent Object): The object that holds the shared DNA (methods).
-// The Instance (The Child): The specific object you use in your code.
+// The Prototype --(The Parent Object): The object that holds the shared DNA (methods).
+// The Instance ---(The Child): The specific object you use in your code.
 
 class UserBluePrint {
   constructor(firstName, lastName) {

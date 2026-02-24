@@ -6,8 +6,8 @@
 // protected: Accessible inside this class and any class that extends (inherits) it.
 
 class User {
-  public username: string;      // Everyone can see
-  private hashedPw: string;     // Only the User class can see
+  public username: string; // Everyone can see
+  private hashedPw: string; // Only the User class can see
   protected internalId: number; // User and its "children" (like Admin) can see
 
   constructor(name: string, pw: string, id: number) {
@@ -22,9 +22,12 @@ class User {
 // As a dev, you'll get tired of declaring properties twice (once at the top, once in the constructor). TypeScript has a "cheat code" for this:
 
 class Product {
-  // Adding the modifier (public/private) directly in the constructor 
+  // Adding the modifier (public/private) directly in the constructor
   // tells TS to automatically create and assign the property.
-  constructor(public name: string, private price: number) {}
+  constructor(
+    public name: string,
+    private price: number,
+  ) {}
 }
 
 const item = new Product("Mechanical Keyboard", 150);

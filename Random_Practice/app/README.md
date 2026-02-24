@@ -21,5 +21,19 @@ TS_Functions          ->
                         Functions  {Return-Type Expressions-Blueprint Overloads}
                         Parameters {Parameter-types Optional-(?) Default-(=) Rest(...)}
 
-Interfaces            -> (extends) Declaration-Merging (implements)
+Interfaces            -> { (extends) Declaration-Merging (implements) }
 
+TS_Classes            ->
+                        Access-Modifiers/Constructor-Params( public private protected )
+                        (readonly)
+                        (get) (set)
+                        Polymorphism (abstract)-Class (abstract)-Method 
+                        method-(override) Constructor-Overloading
+Generics ->
+            Generics-in-Function
+            Generics-in-Interfaces
+            Generics-in-Classes
+            Generic-Constraints-(extends)
+            Parameters-in-Constraints
+            Generic-Classes-Deep-Dive)
+            Default-Values-for-Generics

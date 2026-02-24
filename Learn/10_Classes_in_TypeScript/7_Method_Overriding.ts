@@ -1,6 +1,7 @@
 // ============================================================
 // 1. The Core Syntax: super
-// To override a method, you simply define a method with the exact same name in the child class. You often use the super keyword to call the parent’s version of the method before or after your custom logic.
+// To override a method, you simply define a method with the exact same name in the child class.
+// You often use the super keyword to call the parent’s version of the method before or after your custom logic.
 
 class Mailer {
   send(message: string) {
@@ -17,10 +18,10 @@ class ResendMailer extends Mailer {
   }
 }
 
-// Note on the override keyword: 
-// In TypeScript, adding override is optional but highly recommended. 
-// It tells the compiler: "I intended to override this." 
-// If the parent method name ever changes, 
+// Note on the override keyword:
+// In TypeScript, adding override is optional but highly recommended.
+// It tells the compiler: "I intended to override this."
+// If the parent method name ever changes,
 // TypeScript will throw an error letting you know your override is now "broken."
 
 // ============================================================

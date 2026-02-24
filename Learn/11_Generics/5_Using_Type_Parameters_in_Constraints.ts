@@ -1,5 +1,7 @@
 // Using Type Parameters in Constraints
-// You can even make one generic type depend on another. This is extremely common when writing database helpers where you want to ensure you are accessing a valid key of an object.
+// You can even make one generic type depend on another.
+// This is extremely common when writing database helpers
+// where you want to ensure you are accessing a valid key of an object.
 
 // The keyof operator is the secret sauce here:
 
