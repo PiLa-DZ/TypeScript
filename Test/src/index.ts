@@ -1,18 +1,16 @@
-interface HasId {
-  id: number;
+function log(target: any, key: string) {
+  console.log(target, key);
 }
 
-function processEntity<T extends HasId>(item: T) {
-  console.log("Processing ID:", item.id);
-  return item; // It returns the FULL object back
+class a {
+  @log
+  public c: number;
+  constructor(c: number) {
+    this.c = c;
+  }
+  b() {}
 }
-
-// TEST 1: The "Exact" match
-processEntity({ id: 101 }); // ✅ Works
-
-// TEST 2: The "Extra" match (More common)
-const user = { name: "Gemini", role: "Admin", id: 500 };
-const result = processEntity<HasId>(user); // ✅ Works!
-// Even though 'user' has name and role, it meets the "Minimum Requirement" of having an ID.
-
-console.log(result); // ✅ TypeScript still remembers it has a 'role'!
+a.prototype.b();
+// Evaluation: Done
+// Execution/Setup: Done
+// ACTUAL RUNTIME CALL: Done

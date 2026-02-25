@@ -15,14 +15,15 @@
     "outDir": "./dist",           // Destination for compiled code
     // "noEmit": false,              // Check your code for errors but will not create any files
     // "noEmitOnError": true,        // Prevents broken code from being saved to the dist folder
-    // "sourceMap": true,            // (The Debugger Link) This creates .js.map files.
-    // "declaration": true,          // This tells TypeScript to generate .d.ts files (Declaration files).
+    "sourceMap": true,            // (The Debugger Link) This creates .js.map files.
+    "declaration": true,          // This tells TypeScript to generate .d.ts files (Declaration files).
     // "removeComments": true,       // Optimization 
 
     "skipLibCheck": true,       // Skip type checking of all declaration files (*.d.ts). Saves massive amounts of time and ignores errors in 3rd party libs.
 
     // Type-Cheching (the "Strictness Dial" of TypeScript)
     "strict": true,                  // The 'Master' safety switch. Enables a suite of core strict checks including strictNullChecks and noImplicitAny.
+    "noImplicitAny":   false, 
     // "noUnusedLocals": false,          // Error when a local variable is declared but never used. Keeps code clean and helps find 'forgotten' variables.
     // "noImplicitReturns": true,       // Ensures every code path in a function returns a value. Prevents functions from accidentally returning 'undefined'.
     // "noUncheckedIndexedAccess": true,// The 'Safety First' index check. When accessing an array or object by index, it forces you to check if the value is 'undefined'.
@@ -38,8 +39,8 @@
     "target": "ES2022",              // The version of JavaScript output. ES2022 is perfect for modern Node.js.
     // "lib": ["ES2022"],               // Specifies which type definitions are included. We leave out 'DOM' because this is a backend project.
     "useDefineForClassFields": true, // Standardizes how class properties work. Best to keep true for future-proofing.
-    "experimentalDecorators": false, // Enables the @Decorator syntax. and Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
-    "emitDecoratorMetadata": false,  // Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
+    "experimentalDecorators": true, // Enables the @Decorator syntax. and Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
+    "emitDecoratorMetadata": true,  // Essential if you use frameworks like NestJS or TypeORM. Otherwise, keep them false.
     "moduleDetection": "force",      // Ensures every file is treated as an independent module.
 
     /* Project Options: is specifically for "Monorepos" or very large applications split into multiple smaller packages (a core package, an api package, and a db-client package) */

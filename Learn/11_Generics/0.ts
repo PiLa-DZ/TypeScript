@@ -1,5 +1,5 @@
-// With Generics you can works with any type
 // Generics-function
+// With Generics you can works with any type
 
 // You can use Generics with function-parameters
 // You can use Generics with function-return-type

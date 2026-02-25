@@ -15,12 +15,12 @@ function Log(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   // 2. Replace it with a new "wrapped" version
   descriptor.value = function (...args: any[]) {
     console.log(`--- Before calling ${propertyKey} ---`);
-    
+
     // 3. Run the original function
     const result = originalMethod.apply(this, args);
-    
+
     console.log(`--- After calling ${propertyKey} ---`);
-    
+
     return result;
   };
 }

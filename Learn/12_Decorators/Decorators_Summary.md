@@ -8,7 +8,8 @@ Decorators are a special kind of declaration that can be attached to a
 They use the @expression syntax and act as "wrappers" that add extra logic or metadata to the target.
 
 1.  How they work
-    A decorator is just a function that is automatically called by the TypeScript compiler at runtime. It "intercepts" the target and can modify its behavior or log information.
+    A decorator is just a function that is automatically called by the TypeScript compiler at runtime. 
+    It "intercepts" the target and can modify its behavior or log information.
 
 2.  The Four Main Types
     Class: Target is Class, Parameters (constructor)
