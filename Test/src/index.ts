@@ -1,16 +1,14 @@
-function log(target: any, key: string) {
-  console.log(target, key);
+function PD(
+  target: any, // The Class Prototype
+  methodName: string, // The name of the method the parameter belongs to
+  index: number, // The position of the parameter (0, 1, 2...)
+) {
+  // Logic goes here
+  console.log(index);
 }
-
 class a {
-  @log
-  public c: number;
-  constructor(c: number) {
-    this.c = c;
-  }
-  b() {}
+  b(@PD a: string, b: number, @PD c: boolean) {}
 }
-a.prototype.b();
-// Evaluation: Done
-// Execution/Setup: Done
-// ACTUAL RUNTIME CALL: Done
+// Output:
+// 2
+// 0

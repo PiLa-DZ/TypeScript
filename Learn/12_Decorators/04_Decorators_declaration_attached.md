@@ -1,3 +1,7 @@
+- -------------------------------------------------------------------------------------------------------------------
+### Decorators-declaration-attached
+- -------------------------------------------------------------------------------------------------------------------
+### Decorator-Family
 - TypeScript looks at your decorator function's signature. 
 - If it sees 3 arguments, 
 - it knows it's a method or property; 

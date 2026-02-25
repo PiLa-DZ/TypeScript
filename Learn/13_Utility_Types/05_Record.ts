@@ -1,6 +1,6 @@
-// While Pick and Omit help you modify existing interfaces, 
-// Record helps you create a new structure where you know 
-// the "shape" of the keys and the "type" of the values, 
+// While Pick and Omit help you modify existing interfaces,
+// Record helps you create a new structure where you know
+// the "shape" of the keys and the "type" of the values,
 // but you don't know exactly which keys will be used yet.
 
 // ============================================================
@@ -24,8 +24,8 @@ interface Student {
 
 // Key is a string (ID), Value is a Student object
 const studentDatabase: Record<string, Student> = {
-  "S_001": { name: "Ali", grade: 95 },
-  "S_002": { name: "Hamza", grade: 88 }
+  S_001: { name: "Ali", grade: 95 },
+  S_002: { name: "Hamza", grade: 88 },
 };
 
 console.log(studentDatabase["S_001"].name); // ✅ TypeScript knows this is 'Ali'
@@ -43,18 +43,16 @@ interface Permissions {
 
 // This object MUST have exactly these three keys
 const rolePermissions: Record<Role, Permissions> = {
-    // NOTE: If the LSP show error here it's just because you don't have tsconfig.ts
+  // NOTE: If the LSP show error here it's just because you don't have tsconfig.json
   admin: { canDelete: true, canEdit: true },
   editor: { canDelete: false, canEdit: true },
-  viewer: { canDelete: false, canEdit: false }
+  viewer: { canDelete: false, canEdit: false },
 };
 
 // ❌ Error: Property 'viewer' is missing! (TS catches this immediately)
-
 
 // ============================================================
 // 4. Why this is great for your Backend
 // - 1. Caching: When you fetch data from MariaDB and store it in memory for a few seconds to speed up your API.
 // - 2. Translation/Localization: If your app supports multiple languages (Record<'en' | 'fr', string>).
 // - 3. Status Codes: Mapping HTTP status codes to custom messages (Record<number, string>).
-

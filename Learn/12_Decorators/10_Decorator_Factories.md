@@ -1,3 +1,7 @@
+- -------------------------------------------------------------------------------------------------------------------
+### Decorator-Factories
+- -------------------------------------------------------------------------------------------------------------------
+```ts
 // Step 3: Decorator Factories (Passing Data)
 // Now, what if you want to use the same decorator but for different roles? Like @AuthGuard("admin") or @AuthGuard("editor")?
 
@@ -23,3 +27,4 @@ class PostService {
   @Role("admin")
   deletePost() { /* logic */ }
 }
+```

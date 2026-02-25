@@ -1,3 +1,6 @@
+- -------------------------------------------------------------------------------------------------------------------
+### Decorator-Version
+- -------------------------------------------------------------------------------------------------------------------
 1. Check your tsconfig.json
 - This is the "Control Room" of your project. 
 - Open this file and look for a property called experimentalDecorators.
@@ -7,6 +10,7 @@
 - which TypeScript 5.0+ supports by default.
 ```JSON
 {
+  /* Metadata */
   "compilerOptions": {
     "experimentalDecorators": true, // <--- This is the "Old/Experimental" version
     "emitDecoratorMetadata": true  // Often used with database libraries
