@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:js": "nodemon --watch dist/index.js --exec 'clear; bat dist/index.js --style plain'",
-    "build-watch": "tsc --watch",
+    "build-watch": "clear; tsc --watch",
     "watch:ts": "tsx watch src/index.ts"
   },
   "keywords": [],

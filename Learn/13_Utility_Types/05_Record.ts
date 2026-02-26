@@ -1,3 +1,12 @@
+// ============================================================
+// Record<K,T> create a new structure
+// ============================================================
+const users: Record<number, string> = {
+  1: "user1",
+  2: "user2",
+};
+console.log(users[1]); // user1
+
 // While Pick and Omit help you modify existing interfaces,
 // Record helps you create a new structure where you know
 // the "shape" of the keys and the "type" of the values,

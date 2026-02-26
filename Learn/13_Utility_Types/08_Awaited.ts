@@ -1,23 +1,35 @@
-// Since you are heading toward MariaDB and Express, 
-// you will be dealing with async/await constantly. 
+// ============================================================
+// Awaited<T> Using With (Async Await)
+// ============================================================
+async function getStudent() {
+  return { id: 1, name: "Ali" };
+}
+
+let a: ReturnType<typeof getStudent> = getStudent();
+console.log(a); // Promise { { id: 1, name: 'Ali' } }
+
+let b: Awaited<ReturnType<typeof getStudent>> = await getStudent();
+console.log(b); // { id: 1, name: 'Ali' }
+
+// Since you are heading toward MariaDB and Express,
+// you will be dealing with async/await constantly.
 // Awaited is the tool that "unwraps" a Promise to tell you what's inside.
 
 // ============================================================
 // 1. The Real-World Problem
-// When you fetch a student from your database using an async function, 
-// that function returns a Promise<Student>, 
+// When you fetch a student from your database using an async function,
+// that function returns a Promise<Student>,
 // not just a Student.
 
-// If you want to know what the result of that promise will be before it even finishes, 
+// If you want to know what the result of that promise will be before it even finishes,
 // you use Awaited.
-
 
 async function getStudent() {
   return { id: 1, name: "Ali" };
 }
 
 // The type of 'getStudent' is a function that returns Promise<{id: number, name: string}>
-type WrappedType = ReturnType<typeof getStudent>; 
+type WrappedType = ReturnType<typeof getStudent>;
 // Result: Promise<{id: number, name: string}>
 
 // What if you want the type of the actual data inside that Promise?
@@ -41,7 +53,7 @@ type StudentData = Awaited<ReturnType<typeof getStudent>>;
 
 type DeepPromise = Promise<Promise<Promise<string>>>;
 
-type FinalValue = Awaited<DeepPromise>; 
+type FinalValue = Awaited<DeepPromise>;
 // Result: string
 
 // ============================================================
@@ -49,5 +61,3 @@ type FinalValue = Awaited<DeepPromise>;
 // - 1. Generic API Handlers: If you write a helper function that logs the result of any database query, you use Awaited to define the type of the logged data.
 // - 2. Type-Safe Middleware: In Express, if you have a middleware that pre-fetches a user, you can use Awaited to ensure the next function knows exactly what the user object looks like.
 // - 3. Prisma/ORM Results: Many database libraries return complex Promise types. Awaited helps you extract the clean Interface for your frontend.
-
-

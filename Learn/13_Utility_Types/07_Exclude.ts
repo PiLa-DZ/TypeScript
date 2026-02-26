@@ -1,3 +1,14 @@
+// ============================================================
+// Exclude<T,U> Delete list of choices
+// ============================================================
+type choices = "a" | "b" | "c";
+
+let select_c: Exclude<choices, "a" | "b">;
+
+select_c = "c";
+// select_a_b = "a"; // Error
+
+// ============================================================
 // Think of Exclude as a filter for a list of choices.
 
 // ============================================================
@@ -12,7 +23,7 @@
 // Imagine you have a Union Type representing all possible User Roles in your Express app.
 
 type UserRole = "Admin" | "Manager" | "Editor" | "Guest";
-// Now, you want to create a new type called StaffRole that includes everyone except the "Guest." 
+// Now, you want to create a new type called StaffRole that includes everyone except the "Guest."
 // Instead of typing them all out again, you use Exclude.
 
 // ============================================================
@@ -44,10 +55,3 @@ type ActiveStatus = Exclude<TaskStatus, "Done" | "Archived">;
 function updateTask(id: number, status: ActiveStatus) {
   // This function only accepts "Todo", "InProgress", or "Testing"
 }
-
-
-
-
-
-
-

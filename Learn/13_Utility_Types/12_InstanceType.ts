@@ -1,4 +1,29 @@
-// While ReturnType tells you what a function returns, 
+// ============================================================
+// InstanceType<typeof className> Extract the Instance Type
+// ============================================================
+class DB {
+  connect() {
+    console.log("Connected to MariaDB");
+  }
+}
+
+function initialize1(conn: InstanceType<typeof DB>) {
+  conn.connect();
+}
+
+const myDB = new DB();
+
+initialize1(myDB); // ✅ Works perfectly
+
+// ------------------------------------------------------------
+// Like this using Generic
+function initialize2<T extends DB>(conn: T) {
+  conn.connect();
+}
+initialize2(myDB); // ✅ Works perfectly
+
+// ============================================================
+// While ReturnType tells you what a function returns,
 // InstanceType tells you what a Class produces when you use the new keyword.
 
 // ============================================================
@@ -8,12 +33,14 @@
 // - 1. The Constructor Type: The blueprint (the class itself).
 // - 2. The Instance Type: The actual object created from that blueprint.
 
-// Sometimes you are working with a function that takes a class as an argument 
-// (like a Database Factory), 
+// Sometimes you are working with a function that takes a class as an argument
+// (like a Database Factory),
 // and you need to know what kind of object that class will create.
 
 class DatabaseConnection {
-  connect() { console.log("Connected to MariaDB"); }
+  connect() {
+    console.log("Connected to MariaDB");
+  }
 }
 
 // If I want to type a variable that holds a NEW connection:
@@ -32,20 +59,26 @@ type ConnectionInstance = InstanceType<typeof DatabaseConnection>;
 
 // ============================================================
 // 3. A Practical Backend Example: The "Generic Factory"
-// In a professional backend, 
-// you might have a "Manager" that initializes different services. 
+// In a professional backend,
+// you might have a "Manager" that initializes different services.
 // You can use InstanceType to make it completely type-safe.
 
 class UserService {
-  getAll() { return ["Ali", "Hamza"]; }
+  getAll() {
+    return ["Ali", "Hamza"];
+  }
 }
 
 class PostService {
-  getRecent() { return ["Post 1", "Post 2"]; }
+  getRecent() {
+    return ["Post 1", "Post 2"];
+  }
 }
 
 // A function that takes ANY class and returns an instance of it
-function createService<T extends new (...args: any[]) => any>(ServiceClass: T): InstanceType<T> {
+function createService<T extends new (...args: any[]) => any>(
+  ServiceClass: T,
+): InstanceType<T> {
   return new ServiceClass();
 }
 
@@ -53,6 +86,3 @@ const users = createService(UserService); // Type is correctly inferred as UserS
 const posts = createService(PostService); // Type is correctly inferred as PostService
 
 users.getAll(); // ✅ TypeScript knows this method exists!
-
-
-

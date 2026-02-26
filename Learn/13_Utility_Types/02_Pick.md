@@ -1,11 +1,20 @@
+```ts
+// ============================================================
+// Pick<T,K> "Pick" only what we want
+// ============================================================
+interface User { name: string; bio: string; }
+type UserName = Pick<User, "name">;
+
+let userName: UserName = { name: "Jol" };
+
 // ============================================================
 // 1. The Real-World Problem
-// Imagine your Student model in MariaDB has 10 fields, 
-// including sensitive ones like password or internalNotes. 
+// Imagine your Student model in MariaDB has 10 fields,
+// including sensitive ones like password or internalNotes.
 // When you want to display a "Student List" in a UI,
 // you only need the id, firstName, and lastName.
 
-// You could create a brand-new interface, 
+// You could create a brand-new interface,
 // but then you'd have to update it every time the main Student interface changes.
 
 // ============================================================
@@ -14,7 +23,6 @@
 
 // [1] --> T: The source Type (the big object).
 // [2] --> K: The keys you want to keep (as a string or a union of strings).
-
 
 interface Student {
   id: number;
@@ -37,13 +45,12 @@ type StudentPreview = Pick<Student, "id" | "firstName" | "lastName">;
 */
 
 const list: StudentPreview[] = [
-  { id: 1, firstName: "Ali", lastName: "B." } // Clean and safe!
+  { id: 1, firstName: "Ali", lastName: "B." }, // Clean and safe!
 ];
 
-console.log(list)
+console.log(list);
 // Output:
 // [ { id: 1, firstName: 'Ali', lastName: 'B.' } ]
-
 
 // ============================================================
 // 3. Why this is powerful for your Backend
@@ -59,12 +66,13 @@ console.log(list)
 type UpdateNameOrEmail = Partial<Pick<Student, "email" | "firstName">>;
 
 const list2: UpdateNameOrEmail[] = [
-  { email: "ali@example.com", firstName: "Ali"},
-  { firstName: "Amin"}
+  { email: "ali@example.com", firstName: "Ali" },
+  { firstName: "Amin" },
 ];
 
-console.log(list2)
+console.log(list2);
 // [
 //   { email: 'ali@example.com', firstName: 'Ali' },
 //   { firstName: 'Amin' }
 // ]
+```

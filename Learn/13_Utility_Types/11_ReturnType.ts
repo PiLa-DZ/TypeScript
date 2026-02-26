@@ -1,15 +1,20 @@
-// ReturnType<T> is the partner to Parameters. 
-// While Parameters looks at what goes into a function, 
+// ============================================================
+// ReturnType<typeof function> get type of return-type
+// ============================================================
+
+// ============================================================
+// ReturnType<T> is the partner to Parameters.
+// While Parameters looks at what goes into a function,
 // ReturnType extracts the type of whatever the function gives back.
 //
-// This is incredibly useful when you have a complex function 
-// and you want to use its result type elsewhere 
+// This is incredibly useful when you have a complex function
+// and you want to use its result type elsewhere
 // without manually re-typing it.
 
 // ============================================================
 // 1. The Real-World Problem
-// Imagine you have a function that fetches a user 
-// and performs some complex transformations 
+// Imagine you have a function that fetches a user
+// and performs some complex transformations
 // (adding full names, formatting dates, etc.).
 
 function getFormattedUser() {
@@ -17,7 +22,7 @@ function getFormattedUser() {
     id: 1,
     fullName: "Ali Hamza",
     lastLogin: new Date(),
-    preferences: { theme: "dark", lang: "ar" }
+    preferences: { theme: "dark", lang: "ar" },
   };
 }
 
@@ -55,12 +60,10 @@ async function fetchStatus() {
   return "online";
 }
 
-type StatusType = ReturnType<typeof fetchStatus>; 
+type StatusType = ReturnType<typeof fetchStatus>;
 // Result: Promise<string> (Not just "string"!)
 
 // ------------------------------------------------------------
-// Note: If you want the actual string inside the promise, 
+// Note: If you want the actual string inside the promise,
 // you combine it with what we learned earlier:
 type FinalStatus = Awaited<ReturnType<typeof fetchStatus>>;
-
-

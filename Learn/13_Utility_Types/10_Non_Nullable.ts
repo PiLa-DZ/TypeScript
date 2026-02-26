@@ -1,13 +1,24 @@
-// As a backend developer, 
-// you will often receive data that might be null or undefined 
-// (especially when fetching optional fields from MariaDB). 
+// ============================================================
+// NonNullable<U> Delete null and undefined
+// ============================================================
+type MyUnion = string | null | undefined;
+type ValidType = NonNullable<MyUnion>;
+
+// let a: ValidType = null; // Error
+// let b: ValidType = undefined; // Error
+let c: ValidType = "myName";
+
+// ============================================================
+// As a backend developer,
+// you will often receive data that might be null or undefined
+// (especially when fetching optional fields from MariaDB).
 // NonNullable allows you to take a type and strictly remove those "empty" possibilities.
 
 // ============================================================
 // 1. The Real-World Problem
-// Imagine you have a Union Type for a student's middle name. 
-// In the database, this could be a string, 
-// but it could also be null (if they don't have one) 
+// Imagine you have a Union Type for a student's middle name.
+// In the database, this could be a string,
+// but it could also be null (if they don't have one)
 // or undefined (if the data wasn't loaded).
 
 type MiddleName = string | null | undefined;
@@ -40,7 +51,3 @@ printName("Hussein"); // ✅ Valid
 // 4. Why this is great for your Backend
 // Database Results: When you use an ORM like Prisma, it might return Email | null. If you have a function that sends an email, it cannot handle a null. You use NonNullable to ensure the function only gets real data.
 // Environment Variables: process.env.PORT is typed as string | undefined. To use it safely in your Express server, you can "cast" it or filter it using NonNullable logic.
-
-
-
-

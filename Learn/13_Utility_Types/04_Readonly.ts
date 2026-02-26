@@ -1,6 +1,17 @@
-// In backend development, data integrity is everything. 
-// Readonly ensures that once an object is created 
-// (like a configuration file or a record fetched from MariaDB), 
+// ============================================================
+// Readonly<T>
+// ============================================================
+interface Database {
+  name: string;
+}
+let usersDatabase: Readonly<Database> = { name: "Users" };
+// ❌ ERROR: TypeScript blocks this immediately
+
+// ============================================================
+// usersDatabase.name = "productDatabase";
+// In backend development, data integrity is everything.
+// Readonly ensures that once an object is created
+// (like a configuration file or a record fetched from MariaDB),
 // no part of your code can accidentally change its values.
 
 // ============================================================
@@ -14,7 +25,7 @@ interface Config {
 
 const myConfig: Config = {
   dbHost: "localhost",
-  dbPort: 3306
+  dbPort: 3306,
 };
 
 // ⚠️ DANGER: Someone accidentally changes this!
@@ -26,11 +37,11 @@ myConfig.dbPort = 8080;
 
 const secureConfig: Readonly<Config> = {
   dbHost: "localhost",
-  dbPort: 3306
+  dbPort: 3306,
 };
 
 // ❌ ERROR: TypeScript blocks this immediately
-secureConfig.dbPort = 8080; 
+secureConfig.dbPort = 8080;
 // Error: Cannot assign to 'dbPort' because it is a read-only property.
 
 // ============================================================
@@ -38,9 +49,3 @@ secureConfig.dbPort = 8080;
 // -- 1 API Responses: When you send data to a function that logs or processes it, use Readonly to guarantee that the processing function doesn't mutate the data.
 // -- 2 Environment Variables: Things like PROCESS.ENV values should be stored in a Readonly object.
 // -- 3 Domain Logic: If you have a "Point in Time" record (like an Invoice or a Transaction), it should never change once it's created. Readonly enforces this rule.
-
-
-
-
-
-

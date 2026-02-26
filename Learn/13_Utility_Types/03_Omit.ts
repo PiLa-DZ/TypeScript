@@ -1,5 +1,17 @@
-// While Pick says, "I only want these 3 things," 
-// Omit says, "I want everything EXCEPT these 3 things." 
+// ============================================================
+// Omit<T,K> Skip fields
+// ============================================================
+interface User {
+  name: string;
+  bio: string;
+}
+
+type UserName = Omit<User, "bio">;
+
+let userName: UserName = { name: "Jol" };
+
+// While Pick says, "I only want these 3 things,"
+// Omit says, "I want everything EXCEPT these 3 things."
 // It is often much faster to use when you have a massive interface and only want to hide one or two sensitive fields.
 
 // ============================================================
@@ -36,8 +48,5 @@ type CreateStudentInput = Omit<Student, "id" | "createdAt">;
 const newStudent: CreateStudentInput = {
   email: "ali@example.com",
   firstName: "Ali",
-  lastName: "B."
+  lastName: "B.",
 }; // ✅ No error! We don't need 'id' or 'createdAt' here.
-
-
-

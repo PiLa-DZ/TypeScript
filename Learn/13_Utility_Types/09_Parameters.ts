@@ -1,14 +1,26 @@
-// Instead of looking at what a function gives back (like ReturnType), 
-// Parameters looks at what the function takes in. 
+// ============================================================
+// Parameters<typeof function> Get Params of function
+// ============================================================
+function fun(name: string, age: number, isAdmin: boolean) {}
+
+function fun2(...args: Parameters<typeof fun>) {
+  return args;
+}
+
+fun2("a", 1, true);
+
+// ============================================================
+// Instead of looking at what a function gives back (like ReturnType),
+// Parameters looks at what the function takes in.
 // It extracts the types of all arguments and puts them into a Tuple (a fixed-length array).
 
 // ============================================================
 // 1. The Real-World Problem
-// Imagine you are using a third-party library for your Express API. 
-// It has a function called saveToDatabase, 
+// Imagine you are using a third-party library for your Express API.
+// It has a function called saveToDatabase,
 // but the library doesn't export the type for that function's arguments.
 
-// If you want to write a "Wrapper" or a "Proxy" function that passes the same data through, 
+// If you want to write a "Wrapper" or a "Proxy" function that passes the same data through,
 // you need those types.
 
 // Imagine this is in a library you can't change
@@ -38,17 +50,14 @@ myWrapper("Ali", 25, true); // ✅ Valid
 
 // ============================================================
 // 3. Accessing Specific Parameters
-// Since the result is a Tuple (array), 
+// Since the result is a Tuple (array),
 // you can grab a specific argument by its index.
 
 type NameType = Parameters<typeof createUser>[0]; // string
-type AgeType  = Parameters<typeof createUser>[1]; // number
+type AgeType = Parameters<typeof createUser>[1]; // number
 
 // ============================================================
 // 4. Why this is great for your Backend
 // Middleware: If you are wrapping an Express request handler, you can use Parameters<RequestHandler> to make sure your wrapper accepts exactly what Express expects (req, res, next).
 // Event Listeners: If you are listening to MariaDB events, you can extract the argument types of the event callback to make your listeners type-safe.
 // Refactoring: It allows you to keep your code "in sync" with external libraries. If the library updates and adds a 4th argument, your Parameters helper will update automatically.
-
-
-
