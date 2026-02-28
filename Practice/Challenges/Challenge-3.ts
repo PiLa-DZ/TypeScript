@@ -16,10 +16,3 @@ type Post = {
 //   body?: string; // Stays optional
 //   id: number; // Stays required
 // };
-
-// type FinalPost = {
-//   [K in keyof Post]: K extends "title" ? K : null;
-// };
-type FinalPost = {
-  [K in keyof Post as K extends "title" ? K : never]-?: Post[K];
-};
