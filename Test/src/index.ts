@@ -1,25 +1,35 @@
-// Challenge 3: The "Required Pick" (Expert)
-// Goal: Create a type that makes only specific keys required, while leaving the rest of the object exactly as it was.
-// Input:
+// The Challenge: The DeepValueUnion
+// Create a recursive type called AllValues<T>
+// that travels into every level of an object and
+// returns a Union of every single "leaf" value
 
-import type { string } from "zod";
-
-type Post = {
-  title?: string;
-  body?: string;
-  id: number;
+// (the strings, numbers, and booleans) it finds.
+type CategoryTree = {
+  name: "Electronics";
+  count: 100;
+  sub: {
+    name: "Computers";
+    count: 50;
+    sub: {
+      name: "Laptops";
+      count: 20;
+    };
+  };
 };
+// Hover over 'Step1' in Neovim.
+// You will see: "Electronics" | 100 | { name: "Computers", ... }
 
-// Target Output (Make 'title' required):
-// type FinalPost = {
-//   title: string; // Now required!
-//   body?: string; // Stays optional
-//   id: number; // Stays required
-// };
+// --- YOUR CODE HERE ---
+type AllValues<T> = T extends object
+  ? AllValues<T[keyof T]> // If it's an object, recurse into its values
+  : T; // If it's a "leaf" (string/number), return it
 
-// type FinalPost = {
-//   [K in keyof Post]: K extends "title" ? K : null;
-// };
-type FinalPost = {
-  [K in keyof Post as K extends "title" ? K : never]-?: Post[K];
-};
+type Result = AllValues<CategoryTree>;
+let a: Result;
+a = "Electronics";
+
+type AllValuesDebug<T, Trace = "root"> = T extends object
+  ? AllValuesDebug<T[keyof T], Trace | "going deeper">
+  : T;
+
+type DebugInfo = AllValuesDebug<CategoryTree>;

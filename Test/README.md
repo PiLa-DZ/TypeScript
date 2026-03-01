@@ -29,4 +29,7 @@ function getDeep<T>(obj: T, path: Path<T>) {
 
 console.log(getDeep(user, "fiv.c.b"));
 ```
+- Indexed Access on a Mapped Type.
+- "tricks" in advanced TypeScript `{...}[keyof T]`
 
+- Mapped Types, Indexed Access, and Type Stripping

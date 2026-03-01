@@ -1,5 +1,5 @@
 // Challenge 2: The "Function Creator" (Hard)
-// Goal: In your MariaDB project, you might want to auto-generate "Setter" functions.
+// Goal: auto-generate "Setter" functions.
 // Input:
 
 type User = {
@@ -14,6 +14,14 @@ type User = {
 //   setAge: (val: number) => void;
 // };
 
+// ============================================================
 type UserSetters = {
   [K in keyof User as `get${Capitalize<string & K>}`]: (val: User[K]) => void;
 };
+
+// ============================================================
+type UtilitySetters<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: (val: T[K]) => void;
+};
+
+type userSetters = UtilitySetters<User>;
