@@ -32,4 +32,19 @@ console.log(getDeep(user, "fiv.c.b"));
 - Indexed Access on a Mapped Type.
 - "tricks" in advanced TypeScript `{...}[keyof T]`
 
-- Mapped Types, Indexed Access, and Type Stripping
+- Mapped Types, Indexed Access, Type Stripping
+
+
+```ts
+// ============================================================
+type OnlyObjectKeys<T> = {
+  [K in keyof T]: T[K] extends object ? K : never;
+}[keyof T];
+
+// ============================================================
+type Flatten<T> = T extends object
+  ? { [K in keyof T]: T[K] extends object ? Flatten<T[K]> : T[K] }
+  : T;
+
+// ============================================================
+```
