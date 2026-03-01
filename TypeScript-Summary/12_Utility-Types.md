@@ -1,3 +1,12 @@
+```TS
+/*
+ _   _ _   _ _ _ _         
+| | | | |_(_) (_) |_ _   _ 
+| | | | __| | | | __| | | |
+| |_| | |_| | | | |_| |_| |
+ \___/ \__|_|_|_|\__|\__, |
+                     |___/ 
+
 | *** Utility Types ***
 | Partial<T>     | all fields optional
 | Readonly<T>    | Make anything readonly
@@ -15,3 +24,6 @@
 | ReturnType<typeof function>    | Get Type of return-type
 | Awaited<T>                     | Using With (Async Await)
 | InstanceType<typeof className> | Extract the Instance Type
+
+*/
+```
